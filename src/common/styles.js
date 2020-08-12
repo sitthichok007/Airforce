@@ -1,0 +1,5 @@
+export const PRIMARY_COLOR = '#87CEFA'
+export const SECONDARY_COLOR = '#fff'
+export const ACTIVE_COLOR = '#008080'
+export const FONT = 'Roboto'
+export const BORDER_COLOR = '#4f4f4f'

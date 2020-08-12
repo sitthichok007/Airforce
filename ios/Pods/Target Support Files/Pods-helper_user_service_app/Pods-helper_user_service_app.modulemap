@@ -1,0 +1,6 @@
+module Pods_helper_user_service_app {
+  umbrella header "Pods-helper_user_service_app-umbrella.h"
+
+  export *
+  module * { export * }
+}
