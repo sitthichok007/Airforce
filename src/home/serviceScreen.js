@@ -1,10 +1,10 @@
 import React from 'react'
-import {View,Text,SafeAreaView,StyleSheet,TextInput,Image,TouchableHighlight,ScrollView} from 'react-native'
+import {View,Text,SafeAreaView,StyleSheet,TextInput,Image,TouchableHighlight,ScrollView,TouchableOpacity} from 'react-native'
 import Icon from 'react-native-vector-icons/AntDesign';
 import ImageSlider from 'react-native-image-slider';
 import {PRIMARY_COLOR} from '../common'
 
-export default function ServiceScreen() {
+export default function ServiceScreen({navigation}) {
     const images = [
         'https://ct.lnwfile.com/es4s94.jpg',
         'https://placeimg.com/240/240/people',
@@ -85,9 +85,11 @@ export default function ServiceScreen() {
                        <View style={{display:"flex",width:"90%",marginTop:25,flexDirection:"row"}}>
                            <Text style={{fontSize:20,color: PRIMARY_COLOR}}>บริการยอดนิยม</Text>
                            <Icon color={"#FFD700"} style={{paddingTop:5,paddingLeft:5}} name={'star'} size={20} />
+                           <TouchableOpacity style={{marginLeft:"auto"}} onPress={()=>navigation.navigate("serviceList")}>
                            <View style={{marginLeft:"auto",padding:5,backgroundColor:PRIMARY_COLOR,borderRadius:10,marginTop:2}}>
                                <Text style={{fontSize:12,color:"#0000FF"}}>ทั้งหมด</Text>
                            </View>
+                           </TouchableOpacity>
                        </View>
                        <View style={{backgroundColor:PRIMARY_COLOR,width:"90%",height:1,marginTop:5}} />
                    </View>

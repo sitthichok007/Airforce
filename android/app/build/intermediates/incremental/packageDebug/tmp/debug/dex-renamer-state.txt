@@ -1,4 +1,7 @@
-#Fri Aug 07 00:07:41 ICT 2020
+#Mon Aug 24 00:58:06 ICT 2020
 base.0=/Users/mahoree/react-native/helper_user_service_app/android/app/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex
+path.1=classes.dex
+renamed.1=classes2.dex
 path.0=classes.dex
 renamed.0=classes.dex
+base.1=/Users/mahoree/react-native/airforceui/android/app/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex

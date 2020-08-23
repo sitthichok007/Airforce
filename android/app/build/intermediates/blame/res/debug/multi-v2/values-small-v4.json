@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/mahoree/react-native/helper_user_service_app/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-small-v4/values-small-v4.xml",
+            "outputFile": "/Users/mahoree/react-native/airforceui/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-small-v4/values-small-v4.xml",
             "map": [
                 {
-                    "source": "/Users/mahoree/.gradle/caches/transforms-2/files-2.1/7b4521e09033db39989053c4a0984cc2/material-1.1.0/res/values-small-v4/values-small-v4.xml",
+                    "source": "/private/var/root/.gradle/caches/transforms-2/files-2.1/7b4521e09033db39989053c4a0984cc2/material-1.1.0/res/values-small-v4/values-small-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

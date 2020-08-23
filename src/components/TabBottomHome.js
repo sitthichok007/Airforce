@@ -1,6 +1,8 @@
 import React, { Component,ReactElement  } from 'react'
 import { Text, View,Image,TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/AntDesign';
+import Ent from 'react-native-vector-icons/Entypo'
+
 
 export default  function TabBottomHome({ state, descriptors, navigation }) {
     return (<View style={{ flexDirection: 'row' }}>
@@ -44,14 +46,15 @@ export default  function TabBottomHome({ state, descriptors, navigation }) {
                         onLongPress={onLongPress}
                         style={{ flex: 1,height:80,backgroundColor:"white",justifyContent:"center",alignItems:"center" }}
                     >
-                        {/*<Image*/}
-                        {/*    style={{*/}
-                        {/*        width: 55,*/}
-                        {/*        height: 55,*/}
-                        {/*    }}*/}
-                        {/*    source={index == 0 ? <Icon name={'star'} /> : index == 1 ? <Icon name={'meh'} /> : index == 2 ? <Icon name={'meho'} /> : <Icon name={'user'} /> }*/}
-                        {/*/>*/}
-                        <Icon name={'star'} size={30} />
+
+                        {/*<Icon name={'star'} size={30} />*/}
+                        {
+                            index === 0 ? <Icon color={isFocused ? "#03b3fd" : "#939393"} name={'star'} size={30} /> : index === 1 ? <Ent
+                                    name={'list'}
+                                    color={isFocused ? "#03b3fd" : "#939393"}
+                                    size={30} />
+                            : index === 2 ? <Ent name={"chat"} size={30} color={isFocused ? "#03b3fd" : "#939393"} /> : <Ent color={isFocused ? "#03b3fd" : "#939393"} name={'user'} size={30} />
+                        }
                         <Text style={{ color: isFocused ? '#64b5ea' : '#aebbc4',fontSize:13 }}>
                             {label}
                         </Text>

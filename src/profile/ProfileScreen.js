@@ -45,7 +45,7 @@ export default function ProfileScreen({navigation}) {
                   </TouchableOpacity>
                   <View style={styles.hrline}/>
               </View>
-              <TouchableOpacity style={styles.logoutButton}>
+              <TouchableOpacity style={styles.logoutButton} onPress={()=>navigation.replace("loginThird")}>
                   <Text style={styles.TextLogout}>ออกจากระบบ</Text>
               </TouchableOpacity>
           </SafeAreaView>
