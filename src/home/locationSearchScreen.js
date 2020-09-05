@@ -2,13 +2,13 @@ import React from 'react'
 import {View, Text, SafeAreaView, TouchableOpacity, Image} from 'react-native'
 
 
-export default function LocationSearchScreen() {
+export default function LocationSearchScreen({navigation}) {
    return(
        <View style={{display:"flex",flex:1,padding:30}}>
            <SafeAreaView style={{display:"flex",flex:1}}>
                <View style={{marginTop:10}}>
                <View style={{flexDirection:"row",alignItems:"center"}}>
-                   <TouchableOpacity>
+                   <TouchableOpacity onPress={()=>navigation.goBack()}>
                        <Image source={require("../assets/images/back.png")} style={{width:25,height:25}} />
                    </TouchableOpacity>
                    <Text style={{fontSize:20,color:"#009ada",marginTop:-3,marginLeft:5}}>ค้นหา</Text>

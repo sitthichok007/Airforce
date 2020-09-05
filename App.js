@@ -41,7 +41,6 @@ import LocationSearchScreen from "./src/home/locationSearchScreen";
 import ResearchSearch from "./src/home/resultSearch";
 import LoginThirdParty from "./src/auth/loginWithThirdParty";
 import ListTabs from "./src/listtab/ListTabs";
-import MyTabs from './src/services/BottomTabsService'
 import ServiceList from "./src/services/ServiceList";
 import SpecialLoginScreen from "./src/auth/SpecialLoginScreen";
 import SpecialRegisterScreen from "./src/register/specialregisterScreen";
@@ -54,11 +53,32 @@ import SelectLocationScreen from "./src/register/SelectLocation";
 import WorkDetailScreen from "./src/register/workDetailScreen";
 import ConfirmEmailScreen from "./src/register/confirmEmailScreen";
 import ConfirmEmailSuccessScreen from "./src/register/confirmEmailSuccess";
-
+import ServiceDetailOFType from "./src/services/ServiceDetailOFType";
+import TrainingDateScreen from "./src/register/trainingDateScreen";
+import RegisterSuccessScreen from "./src/register/registerSuccess";
+import SpecialMainScreen from "./src/register/SpecialMainScreen";
+import SpecialWorkListScreen from "./src/admin/SpecialWorkListScreen";
+import SpecialListTab from "./src/admin/SpecialListTab";
+import SpecialNotificationScreen from "./src/admin/SpecialNotification";
+import WorkCalendarScreen from "./src/admin/WorkCalendarScreen";
+import SpecialChatTap from "./src/admin/SpecialChatTap";
+import SpecialAccountScreen from "./src/admin/SpecialAccount";
+import SpecialEditWorkScreen from "./src/admin/SpecialEditWorkScreen";
+import SpecialCareerTypeScreen from "./src/admin/SpecialCareerTypeScreen";
+import BookDetailScreen from "./src/services/BookDetailScreen";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import ServiceDetailScreen from "./src/services/ServiceDetailScreen";
+import InitialChatScreen from "./src/chat/initailChatScreen";
+import ChatWithPersonScreen from "./src/chat/ChatWithPersonScreen";
+import CartScreen from "./src/cart/cartScreen";
+import myaddress from "./src/services/myaddress";
+import CustomerLocationScreen from "./src/services/customerLocationScreen";
+import NotificationScreen from "./src/services/NotificationScreen";
+import LocationScreen from "./src/services/LocationScreen";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+const RootStack = createStackNavigator();
 
 
 function HomeScreenV2() {
@@ -186,62 +206,39 @@ function ForgetPassword() {
 }
 
 
-
-function HomeTab(){
+function WorkTypeDtail(){
   return(
-      <>
-        <Tab.Navigator>
-          <Tab.Screen name="Home" component={HomeScreenV2} />
-          <Tab.Screen name="Settings" component={ServiceScreen} />
-        </Tab.Navigator>
-      </>
+      <RootStack.Navigator mode="modal">
+        <RootStack.Screen
+            name="Main"
+            component={SpecialEditWorkScreen}
+            options={{ headerShown: false }}
+        />
+        <RootStack.Screen
+            options={{ headerShown: false }}
+            name="CareerType"
+            component={SpecialCareerTypeScreen} />
+      </RootStack.Navigator>
+
   )
 }
+
+function ModalScreen({ navigation }) {
+  return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 30 }}>This is a modal!</Text>
+        <Button onPress={() => navigation.goBack()} title="Dismiss" />
+      </View>
+  );
+}
+
+
+
+
 
 const App: () => React$Node = () => {
   return (
     <>
-      {/*<StatusBar barStyle="dark-content" />*/}
-      {/*<SafeAreaView>*/}
-      {/*  <ScrollView*/}
-      {/*    contentInsetAdjustmentBehavior="automatic"*/}
-      {/*    style={styles.scrollView}>*/}
-      {/*    <Header />*/}
-      {/*    {global.HermesInternal == null ? null : (*/}
-      {/*      <View style={styles.engine}>*/}
-      {/*        <Text style={styles.footer}>Engine: Hermes</Text>*/}
-      {/*      </View>*/}
-      {/*    )}*/}
-      {/*    <View style={styles.body}>*/}
-      {/*      <View style={styles.sectionContainer}>*/}
-      {/*        <Text style={styles.sectionTitle}>Step One</Text>*/}
-      {/*        <Text style={styles.sectionDescription}>*/}
-      {/*          Edit <Text style={styles.highlight}>App.js</Text> to change this*/}
-      {/*          screen and then come back to see your edits.*/}
-      {/*        </Text>*/}
-      {/*      </View>*/}
-      {/*      <View style={styles.sectionContainer}>*/}
-      {/*        <Text style={styles.sectionTitle}>See Your Changes</Text>*/}
-      {/*        <Text style={styles.sectionDescription}>*/}
-      {/*          <ReloadInstructions />*/}
-      {/*        </Text>*/}
-      {/*      </View>*/}
-      {/*      <View style={styles.sectionContainer}>*/}
-      {/*        <Text style={styles.sectionTitle}>Debug</Text>*/}
-      {/*        <Text style={styles.sectionDescription}>*/}
-      {/*          <DebugInstructions />*/}
-      {/*        </Text>*/}
-      {/*      </View>*/}
-      {/*      <View style={styles.sectionContainer}>*/}
-      {/*        <Text style={styles.sectionTitle}>Learn More</Text>*/}
-      {/*        <Text style={styles.sectionDescription}>*/}
-      {/*          Read the docs to discover what to do next:*/}
-      {/*        </Text>*/}
-      {/*      </View>*/}
-      {/*      <LearnMoreLinks />*/}
-      {/*    </View>*/}
-      {/*  </ScrollView>*/}
-      {/*</SafeAreaView>*/}
       <NavigationContainer>
         <Stack.Navigator
             initialRouteName="loginThird"
@@ -255,7 +252,7 @@ const App: () => React$Node = () => {
           <Stack.Screen options={{headerShown:false}} name={"resultSearch"} component={ResearchSearch} />
           <Stack.Screen options={{headerShown:false}} name={"loginThird"} component={LoginThirdParty} />
           <Stack.Screen options={{headerShown:false}} name={"listtab"} component={ListTabs} />
-          <Stack.Screen options={{headerShown:false}} name={"tabService"} component={MyTabs} />
+          <Stack.Screen options={{headerShown:false}} name={"tabService"} component={ServiceDetailScreen} />
           <Stack.Screen options={{headerShown:false}} name={"serviceList"} component={ServiceList} />
           <Stack.Screen options={{headerShown:false}} name={"specialScreen"} component={SpecialLoginScreen} />
           <Stack.Screen options={{headerShown:false}} name={"specialRegister"} component={SpecialRegisterScreen} />
@@ -268,6 +265,26 @@ const App: () => React$Node = () => {
           <Stack.Screen options={{headerShown:false}} name={"workDetailScreen"} component={WorkDetailScreen} />
           <Stack.Screen options={{headerShown:false}} name={"confirmEmail"} component={ConfirmEmailScreen} />
           <Stack.Screen options={{headerShown:false}} name={"confirmEmailSuccess"} component={ConfirmEmailSuccessScreen} />
+          <Stack.Screen options={{headerShown:false}} name={"serviceDetailOfType"} component={ServiceDetailOFType} />
+          <Stack.Screen options={{headerShown:false}} name={"trainingDate"} component={TrainingDateScreen} />
+          <Stack.Screen options={{headerShown:false}} name={"registerSuccess"} component={RegisterSuccessScreen} />
+          <Stack.Screen options={{headerShown:false}} name={"specialMain"} component={SpecialMainScreen} />
+          <Stack.Screen options={{headerShown:false}} name={"specialWorkList"} component={SpecialWorkListScreen} />
+          <Stack.Screen options={{headerShown:false}} name={"specialListTab"} component={SpecialListTab} />
+          <Stack.Screen options={{headerShown:false}} name={"specialnotification"} component={SpecialNotificationScreen} />
+          <Stack.Screen options={{headerShown:false}} name={"specialworkCalendar"} component={WorkCalendarScreen} />
+          <Stack.Screen options={{headerShown:false}} name={"specialChatTap"} component={SpecialChatTap} />
+          <Stack.Screen options={{headerShown:false}} name={"specialAccount"} component={SpecialAccountScreen} />
+          <Stack.Screen options={{headerShown:false}} name={"specialEditWork"} component={WorkTypeDtail} />
+          {/*<Stack.Screen options={{headerShown:false}} name={"specialCareerType"} component={WorkTypeDtail} />*/}
+          <Stack.Screen options={{headerShown:false}} name={"BookDetailScreen"} component={BookDetailScreen} />
+          <Stack.Screen options={{headerShown:false}} name={"InitialChat"} component={InitialChatScreen} />
+          <Stack.Screen options={{headerShown:false}} name={"ChatWithPerson"} component={ChatWithPersonScreen} />
+          <Stack.Screen options={{headerShown:false}} name={"CartScreen"} component={CartScreen} />
+          <Stack.Screen options={{headerShown:false}} name={"myaddress"} component={myaddress} />
+          <Stack.Screen options={{headerShown:false}} name={"customerLocation"} component={CustomerLocationScreen} />
+          <Stack.Screen options={{headerShown:false}} name={"notification"} component={NotificationScreen} />
+          <Stack.Screen options={{headerShown:false}} name={"location"} component={LocationScreen} />
 
 
 

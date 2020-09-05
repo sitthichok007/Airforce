@@ -8,12 +8,12 @@ export default function Login({navigation}) {
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
             <ImageBackground
                 source={require("../assets/images/house.jpg")}
-                style={{width: '100%', height: '100%'}}
+                style={{width: '100%', height: '100%',zIndex:-1}}
             >
                 <TouchableOpacity style={{zIndex:10}} onPress={()=>navigation.goBack()}>
-                <View>
-                    <Image source={require("../assets/images/back.png")} style={{width:30,height:30,position:"absolute",top:70,left:20}} />
-                </View>
+                {/*<View>*/}
+                {/*    <Image source={require("../assets/images/back.png")} style={{width:30,height:30,position:"absolute",top:70,left:20}} />*/}
+                {/*</View>*/}
                 </TouchableOpacity>
                 <View style={{display:"flex",flex:1,justifyContent:"center",alignItems:"center"}}>
                     <View style={{flexDirection:"row",justifyContent:"space-between",width:300}}>
@@ -27,13 +27,14 @@ export default function Login({navigation}) {
                             <Text style={{fontSize:20,fontWeight:"bold",color:"white",marginLeft:10}}>สมัครสมาชิก</Text>
                         </TouchableOpacity>
                     </View>
-                    <View style={{width:300,height:status === 1 ? 400 : 220,backgroundColor:"white",opacity:.8,borderRadius:10,marginTop:20,zIndex:-5}}>
+
+                    <View style={{width:300,height:status === 1 ? 400 : 220,backgroundColor:"white",borderRadius:10,marginTop:20}}>
                         {status === 1 ? <View style={{ width: 30, height: 60, overflow: 'hidden', backgroundColor: "white", top: -20, right: 40, position: 'absolute', transform: [{ rotate: '45deg' }] }} />
                             : <View style={{ width: 30, height: 60, overflow: 'hidden', backgroundColor: "white", top: -20, left: 20, position: 'absolute', transform: [{ rotate: '45deg' }] }} /> }
                         <View style={{display:"flex",justifyContent:"center"}}>
                             {
                                 status === 1 ?
-                                    <>
+                                    <View>
                                         <TextInput
                                             placeholder={"ชื่อ"}
                                             style={{ height: 40,borderBottomWidth:1,width:"80%",marginTop:30,fontSize:14,borderBottomColor:"#939393",alignSelf:"center" }}
@@ -59,8 +60,8 @@ export default function Login({navigation}) {
                                         <TouchableOpacity style={{backgroundColor:"#07a8ef",width:"80%",height:40,justifyContent:"center",alignItems:"center",borderRadius:60,zIndex:10,alignSelf:"center",marginTop:20}}>
                                             <Text style={{color:"white",fontSize:15,fontWeight:"bold"}}>ลงทะเบียน</Text>
                                         </TouchableOpacity>
-                                    </> :
-                                    <>
+                                    </View> :
+                                    <View>
                                         <TextInput
                                             placeholder={"รหัสผ่านใหม่"}
                                             style={{ height: 40,borderBottomWidth:1,width:"80%",marginTop:30,fontSize:14,borderBottomColor:"#939393",alignSelf:"center" }}
@@ -79,7 +80,7 @@ export default function Login({navigation}) {
                                         >
                                             <Text style={{color:"white",fontSize:15,fontWeight:"bold"}}>ยืนยัน</Text>
                                         </TouchableOpacity>
-                                    </>
+                                    </View>
                             }
                         </View>
                     </View>

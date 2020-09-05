@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import {Text, View, StyleSheet, SafeAreaView, TextInput, Dimensions, Image} from 'react-native'
+import {Text, View, StyleSheet, SafeAreaView, TextInput, Dimensions, Image,TouchableOpacity} from 'react-native'
 
 import MultiSlider from '@ptomasroos/react-native-multi-slider'
-import {TouchableOpacity} from "react-native-gesture-handler";
+
 
 
 const windowWidth = Dimensions.get('window').width;

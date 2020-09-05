@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text, SafeAreaView, Image, StyleSheet,TouchableOpacity} from 'react-native'
+import {View, Text, SafeAreaView, Image, StyleSheet,TouchableOpacity,ScrollView} from 'react-native'
 import Icon from "react-native-vector-icons/AntDesign";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import AntIcon from 'react-native-vector-icons/AntDesign'
@@ -8,13 +8,14 @@ export default function ServiceList({navigation}) {
     return(
         <View style={{flex:1,display:"flex"}}>
            <SafeAreaView style={{display:"flex",flex:1}}>
+               <ScrollView>
                <View style={{display:"flex",flexDirection:"column",flex:1}}>
                    <View style={{display:"flex",flexDirection:"row",marginTop:10}}>
                        <Text style={{fontSize:30,marginLeft:20,marginTop:3,color:"#07a8ef"}}>สวัสดี! , คุณไมตรี</Text>
                        <View style={{display:"flex",flexDirection:"column",alignItems:"flex-end",flex:1}}>
                            <View style={{display:"flex",flexDirection:"row",flex:1}}>
-                               <Icon style={{marginTop:10,marginLeft:10}} color={'#939393'} name={'shoppingcart'} size={30} />
-                               <Icon style={{marginTop:10,marginLeft:10,marginRight:10}} color={'#939393'} name={'bells'} size={30} />
+                               <TouchableOpacity onPress={()=>navigation.navigate('CartScreen')}><Icon style={{marginTop:10,marginLeft:10}} color={'#939393'} name={'shoppingcart'} size={30} /></TouchableOpacity>
+                               <TouchableOpacity onPress={()=>navigation.navigate('notification')}><Icon style={{marginTop:10,marginLeft:10,marginRight:10}} color={'#939393'} name={'bells'} size={30} /></TouchableOpacity>
                            </View>
                        </View>
                    </View>
@@ -26,7 +27,9 @@ export default function ServiceList({navigation}) {
                            <Text style={{fontSize:24,marginLeft:5,color:"#07a8ef"}}>ล้างแอร์</Text>
                        </View>
                        <View style={{marginRight:20,marginTop:15}}>
+                           <TouchableOpacity onPress={()=>navigation.navigate('serviceDetailOfType')}>
                            <Text style={{color:"#07a8ef",fontSize:16}}>ดูรายละเอียดบริการ</Text>
+                           </TouchableOpacity>
                        </View>
                    </View>
 
@@ -201,6 +204,7 @@ export default function ServiceList({navigation}) {
                        </View>
                    </View>
                </View>
+               </ScrollView>
            </SafeAreaView>
         </View>
     )

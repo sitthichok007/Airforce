@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import {Text, View, StyleSheet, SafeAreaView, Image} from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import {Text, View, StyleSheet, SafeAreaView, Image,TouchableOpacity} from 'react-native'
 
 import Icon from 'react-native-vector-icons/Entypo'
 

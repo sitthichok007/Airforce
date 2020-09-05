@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import {Text, View, StyleSheet, SafeAreaView, TextInput, Picker, Platform, Image} from 'react-native'
-import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
+import {Text, View, StyleSheet, SafeAreaView, TextInput, Picker, Platform, Image,ScrollView, TouchableOpacity} from 'react-native'
 
 
 import DropDownPicker from 'react-native-dropdown-picker';

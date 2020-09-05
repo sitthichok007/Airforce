@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, SafeAreaView, Image } from 'react-native'
-import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler'
+import { Text, View, StyleSheet, SafeAreaView, Image,TouchableOpacity, ScrollView } from 'react-native'
 
 import Ionicons from 'react-native-vector-icons/Ionicons'
 

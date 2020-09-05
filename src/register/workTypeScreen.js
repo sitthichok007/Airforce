@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import {Text, View, StyleSheet, TextInput, ScrollView, Image} from 'react-native'
+import {Text, View, StyleSheet, TextInput, ScrollView, Image,TouchableOpacity} from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import AntIcon from 'react-native-vector-icons/AntDesign'
-import { TouchableOpacity } from 'react-native-gesture-handler'
 import CheckBox from '@react-native-community/checkbox';
 
 export class WorkTypeScreen extends Component {

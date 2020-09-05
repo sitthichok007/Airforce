@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, SafeAreaView, Image, Dimensions } from 'react-native'
-import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler'
+import { Text, View, StyleSheet, SafeAreaView, Image, Dimensions,TouchableOpacity, ScrollView } from 'react-native'
 
 import Modal from 'react-native-modal';
 import CheckBox from '@react-native-community/checkbox';
@@ -155,6 +154,7 @@ export class RequestScreen extends Component {
                                     ยืนยันการยกเลิก
                                 </Text>
                             </TouchableOpacity>
+
                         </View>
                     </Modal>
 

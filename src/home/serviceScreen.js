@@ -1,10 +1,22 @@
-import React from 'react'
-import {View,Text,SafeAreaView,StyleSheet,TextInput,Image,TouchableHighlight,ScrollView,TouchableOpacity} from 'react-native'
+import React,{useState,useRef} from 'react'
+import {View,Text,SafeAreaView,StyleSheet,TextInput,Image,TouchableHighlight,ScrollView,TouchableOpacity,TouchableWithoutFeedback} from 'react-native'
 import Icon from 'react-native-vector-icons/AntDesign';
 import ImageSlider from 'react-native-image-slider';
 import {PRIMARY_COLOR} from '../common'
 
+
 export default function ServiceScreen({navigation}) {
+    const fqText = ['แม่บ้าน', 'ช่างไฟฟ้า', 'ช่างประปา', 'ดูแลสวน', 'ช่างยนต์', 'ซ่อมเครื่องปรับอากาศ', 'ส่งเอกสาร', 'ส่งอาหาร', 'ช่างเทคนิค', 'ซ่อมคอมพิวเตอร์', 'คนขับรถ', 'ซ่อมบำรุง']
+    const workType = ['ทำความสะอาดทั่วไป', 'ทำความสะอาดห้องน้ำ', 'พ่นฆ่าเชื้อโรค', 'รีดผ้า', 'ซักผ้า', 'ทำความสะอาดรถ']
+    const workDetail = ['ทำความสะอาดพื้นห้องน้ำ', 'ทำความสะอาดโถส้วม', 'ทำความสะอาดก๊อกน้ำ', 'ทำความสะอาดอ่างล้างหน้า', 'พ่นฆ่าเชื้อโรค']
+    const [onFocus,setOnFocus] = useState(false)
+    const InputRef = useRef(null);
+
+
+    // const UnFocus = () =>{
+    //     setOnFocus(false)
+    // };
+
     const images = [
         'https://ct.lnwfile.com/es4s94.jpg',
         'https://placeimg.com/240/240/people',
@@ -13,19 +25,23 @@ export default function ServiceScreen({navigation}) {
     ];
    return(
        <View style={styles.container}>
+           {/*<TouchableWithoutFeedback style={styles.container}>*/}
            <SafeAreaView style={styles.container}>
+
                <View style={{display:"flex",flexDirection:"column",flex:1}}>
-                    <View style={{display:"flex",flexDirection:"row",marginTop:10}}>
+                   <TouchableWithoutFeedback onPress={()=>setOnFocus(false)}>
+                   <View style={{display:"flex",flexDirection:"row",marginTop:10}}>
                         <Text style={{fontSize:32,marginLeft:20}}>สวัสดี!</Text>
                     <View style={{display:"flex",flexDirection:"column",alignItems:"flex-end",flex:1}}>
                         <View style={{display:"flex",flexDirection:"row",flex:1}}>
-                            <Icon style={{marginTop:10,marginLeft:10}} name={'star'} size={30} />
-                            <Icon style={{marginTop:10,marginLeft:10,marginRight:10}} name={'star'} size={30} />
+                            <TouchableOpacity onPress={()=>navigation.navigate('CartScreen')}><Icon style={{marginTop:10,marginLeft:10}} color={'#939393'} name={'shoppingcart'} size={30} /></TouchableOpacity>
+                            <TouchableOpacity onPress={()=>navigation.navigate('notification')}><Icon style={{marginTop:10,marginLeft:10,marginRight:10}} color={'#939393'} name={'bells'} size={30} /></TouchableOpacity>
                         </View>
                     </View>
                 </View>
+                   </TouchableWithoutFeedback>
 
-                   <View style={{display:"flex",alignItems:"center",marginTop:20,marginBottom:20}}>
+                   <View style={{display:"flex",alignItems:"center",marginTop:20,marginBottom:20}} >
                        <View style={{
                            flexDirection:"row",
                            alignItems:"center",
@@ -41,14 +57,88 @@ export default function ServiceScreen({navigation}) {
                                paddingRight: 10,
                                paddingBottom: 10,
                                paddingLeft: 0,
+                               width:"80%",
                                backgroundColor: '#fff',
                                color: '#424242',
+
                            }} underlineColorAndroid="transparent"
                                       placeholder={"ค้นหาบริการ"}
+                                      onFocus={()=>setOnFocus(true)}
+                                      ref={InputRef}
                            />
                        </View>
+                       {
+                           onFocus ?
+                               <ScrollView contentContainerStyle={{paddingBottom: 80}}>
+                               <View style={styles.dropSearchContainer}>
+
+
+                                   <Text style={styles.headerText}>สถานที่ปฏิบัติงาน</Text>
+                                   <View style={styles.searchBox}>
+                                       <TouchableOpacity style={styles.inputChoose} onPress={()=>navigation.navigate('locationSearch')}>
+                                           <Text style={styles.inputChooseText}>ระบุสถานที่ปฏิบัติงาน</Text>
+                                           <Icon style={styles.chooseIcon} name="right" size={18} color="#939393" />
+                                       </TouchableOpacity>
+                                   </View>
+
+                                   <Text style={styles.headerText}>คำค้นยอดนิยม</Text>
+                                   <View style={styles.tagsContainer}>
+
+                                       {
+                                           fqText.map((value, key) => {
+                                               return (
+                                                   <TouchableOpacity key={key} style={styles.tagsItem}>
+                                                       <Text style={styles.tagsItemText}>{value}</Text>
+                                                   </TouchableOpacity>
+                                               )
+                                           })
+                                       }
+
+                                   </View>
+
+                                   <Text style={styles.headerText}>ประเภทงาน</Text>
+                                   <View style={styles.tagsContainer}>
+
+                                       {
+                                           workType.map((value, key) => {
+                                               return (
+                                                   <TouchableOpacity key={key} style={styles.tagsItem}>
+                                                       <Text style={styles.tagsItemText}>{value}</Text>
+                                                   </TouchableOpacity>
+                                               )
+                                           })
+                                       }
+
+                                   </View>
+
+                                   <Text style={styles.headerText}>รายละเอียดงาน</Text>
+                                   <View style={styles.tagsContainer}>
+
+                                       {
+                                           workDetail.map((value, key) => {
+                                               return (
+                                                   <TouchableOpacity key={key} style={styles.tagsItem}>
+                                                       <Text style={styles.tagsItemText}>{value}</Text>
+                                                   </TouchableOpacity>
+                                               )
+                                           })
+                                       }
+
+                                   </View>
+
+                                   <TouchableOpacity style={styles.searchButton} onPress={()=>navigation.navigate('resultSearch')}>
+                                       <Text style={styles.searchButtonText}>ค้นหา</Text>
+                                   </TouchableOpacity>
+
+                               </View>
+                               </ScrollView>
+                               : null
+                       }
                    </View>
+                   {/*{onFocus ? <View style={{height:20,width:100}} /> : null}*/}
+
                    <ScrollView style={{flex:1}} contentContainerStyle={{paddingBottom: 60}}>
+                       <TouchableWithoutFeedback onPress={()=>setOnFocus(false)}>
                    <View style={{display:"flex",flex:1}}>
                    <View style={{backgroundColor:"#F5F5F5",display:"flex",flex:1}}>
                          <View style={{display:"flex",width:"100%",height:170}}>
@@ -171,11 +261,15 @@ export default function ServiceScreen({navigation}) {
                        </View>
                    </View>
                    </View>
+                       </TouchableWithoutFeedback>
                    </ScrollView>
 
 
                </View>
            </SafeAreaView>
+           {/*</TouchableWithoutFeedback>*/}
+
+
        </View>
    )
 }
@@ -184,7 +278,8 @@ export default function ServiceScreen({navigation}) {
 const styles = StyleSheet.create({
     container:{
       flex:1,
-        display:"flex"
+        display:"flex",
+        backgroundColor:"white"
     }, slider: { backgroundColor: '#000', height: 350 },
     buttons: {
         zIndex: 1,
@@ -216,4 +311,78 @@ const styles = StyleSheet.create({
         width: "100%",
         height: "100%",
     },
+    searchContainer: {
+        paddingTop: 20,
+        paddingBottom: 15,
+        paddingHorizontal: 30,
+    },
+    searchBox: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        borderColor: '#939393',
+        padding: 10,
+        borderWidth: 1,
+        borderRadius: 10,
+        backgroundColor: '#fff'
+    },
+    inputText: {
+        fontSize: 18,
+        height: 20,
+        width: '100%',
+        alignItems: 'center',
+        paddingLeft: 10,
+    },
+    inputChoose: {
+        height: 16,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        width: 320,
+        paddingLeft: 20
+    },
+    inputChooseText: {
+        fontSize: 16,
+        color: '#939393',
+        alignItems: 'center',
+        marginTop: -3
+    },
+    dropSearchContainer: {
+        backgroundColor: '#fff',
+        paddingHorizontal: 30
+    },
+    headerText: {
+        color: '#3dbaf2',
+        fontSize: 18,
+        paddingVertical: 10
+    },
+    tagsContainer: {
+        flexDirection: "row",
+        flexWrap: 'wrap'
+    },
+    tagsItem: {
+        backgroundColor: '#c2edff',
+        alignSelf: 'flex-start',
+        paddingHorizontal: 7,
+        paddingVertical: 3,
+        borderRadius: 5,
+        marginLeft: 5,
+        marginBottom: 5
+    },
+    tagsItemText: {
+        color: '#199ed5',
+        fontSize: 14
+    },
+    searchButton: {
+        backgroundColor: '#00a9ef',
+        marginVertical: 20,
+        marginHorizontal: 30,
+        borderRadius: 30
+    },
+    searchButtonText: {
+        color: '#fff',
+        paddingVertical: 7,
+        textAlign: 'center',
+        fontSize: 20
+    }
+
 });

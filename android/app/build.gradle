@@ -150,6 +150,12 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+//         release {
+//               storeFile file('your_key_name.keystore')
+//               storePassword 'your_key_store_password'
+//               keyAlias 'your_key_alias'
+//               keyPassword 'your_key_file_alias_password'
+//         }
     }
     buildTypes {
         debug {
@@ -159,6 +165,7 @@ android {
             // Caution! In production, you need to generate your own keystore file.
             // see https://facebook.github.io/react-native/docs/signed-apk-android.
             signingConfig signingConfigs.debug
+//             signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
@@ -191,6 +198,16 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
+
+    implementation project(':react-native-maps') //added
+
+    implementation(project(':react-native-maps')){ //added
+        exclude group: 'com.google.android.gms', module: 'play-services-base' //added
+        exclude group: 'com.google.android.gms', module: 'play-services-maps' //added
+    }
+    implementation 'com.google.android.gms:play-services-base:10.0.1' //added
+    implementation 'com.google.android.gms:play-services-maps:10.0.1' //added
+
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 

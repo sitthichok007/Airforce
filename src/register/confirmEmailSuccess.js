@@ -21,7 +21,7 @@ export class ConfirmEmailSuccessScreen extends Component {
                 }}>
                     <Text style={{fontSize:20,color:"#009ada",textAlign:"center",alignItems:"center"}}>ยืนยันตัวตน</Text>
                 </View>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=>this.props.navigation.navigate('trainingDate')}>
                     <View style={styles.profileContainer}>
 
 

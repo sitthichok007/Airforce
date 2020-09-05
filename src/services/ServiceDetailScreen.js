@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Text, View, SafeAreaView, StyleSheet, Image,TouchableOpacity } from 'react-native'
-import { ScrollView } from 'react-native-gesture-handler'
+import { Text, View, SafeAreaView, StyleSheet, Image,TouchableOpacity,ScrollView } from 'react-native'
+
 
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import AntIcon from 'react-native-vector-icons/AntDesign'
@@ -8,13 +8,14 @@ import AntIcon from 'react-native-vector-icons/AntDesign'
 export default function ServiceDetailScreen({navigation}){
 
         return (
-            <SafeAreaView style={styles.container}>
+            <View style={styles.container}>
+            <SafeAreaView  />
                 <View style={{display:"flex",flexDirection:"row",marginTop:10}}>
                     <Text style={{fontSize:30,marginLeft:20,marginTop:3,color:"#07a8ef"}}>สวัสดี! , คุณไมตรี</Text>
                     <View style={{display:"flex",flexDirection:"column",alignItems:"flex-end",flex:1}}>
                         <View style={{display:"flex",flexDirection:"row",flex:1}}>
-                            <AntIcon style={{marginTop:10,marginLeft:10}} color={'#939393'} name={'shoppingcart'} size={30} />
-                            <AntIcon style={{marginTop:10,marginLeft:10,marginRight:10}} color={'#939393'} name={'bells'} size={30} />
+                            <TouchableOpacity onPress={()=>navigation.navigate('CartScreen')}><AntIcon style={{marginTop:10,marginLeft:10}} color={'#939393'} name={'shoppingcart'} size={30} /></TouchableOpacity>
+                            <TouchableOpacity onPress={()=>navigation.navigate('notification')}><AntIcon style={{marginTop:10,marginLeft:10,marginRight:10}} color={'#939393'} name={'bells'} size={30} /></TouchableOpacity>
                         </View>
                     </View>
                 </View>
@@ -22,7 +23,9 @@ export default function ServiceDetailScreen({navigation}){
                     <TouchableOpacity onPress={()=>navigation.goBack()}>
                     <Image source={require('../assets/images/back.png')} style={{width:20,height:20}} />
                     </TouchableOpacity>
+
                     <Text style={{fontSize:18,color:"#07a8ef",paddingLeft:10}}>รายละเอียดเพิ่มเติม</Text>
+
                 </View>
                 <ScrollView style={styles.scrollView}>
                     <View style={styles.serviceDetailContainerAll}>
@@ -297,7 +300,16 @@ export default function ServiceDetailScreen({navigation}){
 
 
                 </ScrollView>
-            </SafeAreaView>
+                <View style={{height:70,width:"100%",flexDirection:"row"}}>
+                    <TouchableOpacity style={{width:"50%",backgroundColor:"#07a8ef",justifyContent:"center",alignItems:"center"}} onPress={()=>navigation.navigate('InitialChat')}>
+                        <AntIcon name={'wechat'} color={'white'} size={50} />
+                        <Text style={{fontSize:20,color:"white",marginTop:-15}}>แชท</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={{width:"50%",justifyContent:"center",alignItems:"center"}} onPress={()=>navigation.goBack()}>
+                        <Text style={{fontSize:20,color:"#07a8ef",fontWeight:"bold"}}>เลือกบริการ</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
         )
 }
 
@@ -392,7 +404,8 @@ const styles = StyleSheet.create({
     },
     serviceBlocHeader: {
         paddingTop: 10,
-        color: '#00a9ef'
+        color: '#00a9ef',
+        paddingLeft:10
     },
     serviceBlocDetail: {
         paddingTop: 10,

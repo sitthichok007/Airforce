@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, Image, SafeAreaView, ImageBackground } from 'react-native'
-import { ScrollView, TextInput, TouchableOpacity } from 'react-native-gesture-handler'
+import { Text, View, StyleSheet, Image, SafeAreaView, ImageBackground,ScrollView, TextInput, TouchableOpacity } from 'react-native'
+
 
 import EvilIcon from 'react-native-vector-icons/EvilIcons'
 
@@ -57,7 +57,7 @@ export class SpecialLoginScreen extends Component {
                                 <Text style={styles.forgetPassword}>ลืมรหัสผ่าน</Text>
                             </TouchableOpacity>
 
-                            <TouchableOpacity style={styles.loginButton}>
+                            <TouchableOpacity style={styles.loginButton} onPress={()=>this.props.navigation.navigate('specialMain')}>
                                 <Text style={styles.loginButtonText}>เข้าสู่ระบบ</Text>
                             </TouchableOpacity>
                         </View>
